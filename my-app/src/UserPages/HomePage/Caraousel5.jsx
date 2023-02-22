@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, IconButton, useBreakpointValue } from "@chakra-ui/react";
+import { Box, Hide, IconButton, useBreakpointValue } from "@chakra-ui/react";
 // Here we have used react-icons package for the icons
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 // And react-slick as our Carousel Lib
@@ -58,6 +58,7 @@ export default function Carousel5() {
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
       />
       {/* Left Icon */}
+      <Hide below="md">
       <IconButton
         aria-label="left-arrow"
         // colorScheme="messenger"
@@ -85,6 +86,7 @@ export default function Carousel5() {
       >
         <BiRightArrowAlt color="black" />
       </IconButton>
+      </Hide>
       {/* Slider */}
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
         {cards.map((url, index) => (

@@ -3,7 +3,7 @@ import { Box, Flex, Heading, Hide, Image, Text } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
 
 const ProductCard = (data) => {
-  console.log(data.data);
+//   console.log(data.data);
   return (
     <NavLink to={`/${data?.data?.endpoint}/${data?.data?.id}`}>
     <Box height="auto" width={['50vw','30vw',"30vw", "20vw","20vw"]} paddingTop="20px" paddingBottom="20px">

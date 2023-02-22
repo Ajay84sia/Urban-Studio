@@ -7,7 +7,7 @@ import ProductCard from "./ProductCard";
 
 const Mens = () => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
   const fetchData = () => {
@@ -38,7 +38,8 @@ const Mens = () => {
           src="https://i.stack.imgur.com/hzk6C.gif"
           alt="loading"
           margin="auto"
-          paddingTop="70px"
+          paddingTop="90px"
+          marginBottom="360px"
         />
         <Footer />
       </>
