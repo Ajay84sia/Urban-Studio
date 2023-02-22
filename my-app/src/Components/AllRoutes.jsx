@@ -9,19 +9,21 @@ import Kids from "../UserPages/Kids";
 import HomeAndKitchen from "../UserPages/HomeAndKitchen";
 import Home from "../UserPages/HomePage/Home";
 import NotFound from "../UserPages/NotFound";
+import SingleProduct from "../UserPages/SingleProduct";
 
 const AllRoutes = () => {
   return (
     <div>
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/men" element={<Mens />}></Route>
+        <Route path="/mens" element={<Mens />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/indie" element={<Indie />}></Route>
         <Route path="/kids" element={<Kids />}></Route>
         <Route path="/homekitchen" element={<HomeAndKitchen />}></Route>
-        <Route path="/women" element={<Womens />}></Route>
+        <Route path="/womens" element={<Womens />}></Route>
+        <Route path="/:endpoint/:id" element={<SingleProduct />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </div>

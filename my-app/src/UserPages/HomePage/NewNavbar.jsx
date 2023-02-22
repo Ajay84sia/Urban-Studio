@@ -13,7 +13,6 @@ import {
   useColorMode,
   PopoverContent,
   useColorModeValue,
-  useBreakpointValue,
   useDisclosure,
   Image,
   Hide,
@@ -69,7 +68,7 @@ export default function NewNavbar() {
               src={colorMode === "light" ? LightModeLogo : DarkModeLogo}
               alt="logo"
               width="180px"
-              _hover={{ width: "179px", height: "51px" }}
+              _hover={{transition:'3s' , transform:'scale(1.05,1.05)'}}
             />
           </NavLink>
 
@@ -287,33 +286,33 @@ const MobileNavItem = ({ label, children, href }) => {
 const NAV_ITEMS = [
   {
     label: "MEN",
-    href: "/men",
+    href: "/mens",
     children: [
       {
         label: "Western Wear",
         subLabel: "Jackets / Coats / Jeans / Shirts / Sweatshirts / Hoodies / Track Pants / Trousers / Pants / T-Shirts",
-        href: "/men",
+        href: "/mens",
       },
       {
         label: "Foot Wear",
         subLabel: "Casual / Shoes / Flip-Flops / Slippers / Formal Shoes / Sandals / Sneakers / Sports Shoes",
-        href: "/men",
+        href: "/mens",
       },
     ],
   },
   {
     label: "WOMEN",
-    href: "/women",
+    href: "/womens",
     children: [
       {
         label: "Fusion Wear",
         subLabel: "Dresses / Gowns / Kurtas / Kurtis / Pants / Shorts / Jackets / Shrugs / Shirts / Tops / Tunics",
-        href: "/women",
+        href: "/womens",
       },
       {
         label: "Foot Wear",
         subLabel: "Casual Shoes / Flat Sandals / Sports Shoes / Slippers / Heeled Sandals / Heeled Shoes / Boots",
-        href: "/women",
+        href: "/womens",
       },
     ],
   },
@@ -354,13 +353,13 @@ const NAV_ITEMS = [
     href: "/homekitchen",
     children: [
       {
-        label: "Home Decor",
-        subLabel: "Window Curtains / Door Curtains / Cushions / Pillows / Cushion Covers / Pillow Covers",
+        label: "Kitchen",
+        subLabel: "Cookware & Cutlery / Bakeware / Kitchen Tools / Kitchen Aprons, Gloves & Towel / Kitchen Organisers",
         href: "/homekitchen",
       },
       {
-        label: "Kitchen",
-        subLabel: "Cookware & Cutlery / Bakeware / Kitchen Tools / Kitchen Aprons, Gloves & Towel / Kitchen Organisers",
+        label: "Home Decor",
+        subLabel: "Window Curtains / Door Curtains / Cushions / Pillows / Cushion Covers / Pillow Covers",
         href: "/homekitchen",
       },
       {
