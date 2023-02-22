@@ -18,7 +18,7 @@ import { ChevronDownIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import LightModeLogo from "./Images/LightModeLogo.png";
 import DarkModeLogo from "./Images/DarkModeLogo.png";
 import { NavLink } from "react-router-dom";
-
+import { FaShoppingBag } from 'react-icons/fa';
 export default function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
@@ -29,7 +29,7 @@ export default function Navbar() {
         boxShadow="md"
         position="fixed"
         width="100%"
-        zIndex={2}
+        zIndex={3}
       >
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <Box>
@@ -239,13 +239,9 @@ export default function Navbar() {
               </Hide>
 
               <Hide below="lg">
-                <Tooltip hasArrow label="Your Bag is Empty" bg="red.600">
+                <Tooltip hasArrow label="Your Bag is Empty" bg="gray.400">
                   <Button bg={useColorModeValue("white")} isDisabled>
-                    <Image
-                      src="https://assets.ajio.com/static/img/emptyCart.png"
-                      alt="cart"
-                      width="30px"
-                    />
+                  <FaShoppingBag/>
                   </Button>
                 </Tooltip>
               </Hide>

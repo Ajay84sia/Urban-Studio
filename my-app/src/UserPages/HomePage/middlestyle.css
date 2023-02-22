@@ -1,0 +1,12 @@
+
+
+.scaleImg{
+    transform:scale(1, 1);
+    transition: 3s;
+    cursor: pointer;
+}
+
+.scaleImg:hover{
+    transform:scale(1.05, 1);
+    cursor: pointer;
+}

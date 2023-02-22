@@ -14,16 +14,19 @@ import {
   Heading,
   Text,
   useColorModeValue,
-  Link,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { NavLink } from "react-router-dom";
+import NewNavbar from "./HomePage/NewNavbar";
+import Footer from "./HomePage/Footer";
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
+    <>
+    <NewNavbar/>
     <Flex
       minH={"100vh"}
       align={"center"}
@@ -106,5 +109,7 @@ export default function Register() {
         </Box>
       </Stack>
     </Flex>
+    <Footer/>
+    </>
   );
 }
