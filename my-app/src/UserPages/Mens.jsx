@@ -38,7 +38,7 @@ const Mens = () => {
       .get(`https://prickly-gold-robe.cyclic.app/mens`, {
         params: {
           q: brand,
-          // title:name,
+          search : "Knit",
           _sort: sort,
           _order: order,
           _page: page,

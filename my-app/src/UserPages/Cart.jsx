@@ -11,6 +11,7 @@ import {
   Select,
   Text,
   useColorModeValue,
+  useToast,
 } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -24,7 +25,9 @@ const Cart = () => {
   const color = useColorModeValue("white");
   const color1 = useColorModeValue("#d1b080", "yellow");
   const color2 = useColorModeValue("gray.900", "gray.50");
-
+  const toast = useToast();
+  const [cartTotal, setCartTotal] = useState(0)
+  
   const fetchData = () => {
     setLoading(true);
     axios
@@ -44,6 +47,52 @@ const Cart = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const handleQty = (value, id) => {
+    toast({
+      title: `Quatity has changed to ${value}`,
+      status: "success",
+      duration: 1000,
+      isClosable: true,
+    });
+    fetch(`https://serverjson-xw6d.onrender.com/cart/${id}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        quantity: value,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => fetchData());
+  };
+
+  const handleCartTotal = () =>{
+
+    const total = data.reduce((acc, item) => {
+      return acc + item.price * item.quantity;
+    }, 0);
+    
+
+    setCartTotal(total)
+  }
+
+  useEffect(()=>{
+    handleCartTotal()
+  })
+
+  const handleDeleteItem = (id) => {
+    fetch(`https://serverjson-xw6d.onrender.com/cart/${id}`,
+    { method: 'DELETE' })
+   .then(() => fetchData());
+   toast({
+    title: `Product removed from the cart`,
+    status: "info",
+    duration: 1000,
+    isClosable: true,
+  });
+  }
 
   if (loading === true) {
     return (
@@ -87,14 +136,22 @@ const Cart = () => {
             src="https://www.eyecatchers.in/shop-online/images/cart-empty.jpg"
             alt="emptyCart"
             marginTop="-40px"
-            marginBottom='50px'
+            marginBottom="50px"
           />
         </Center>
       ) : (
         <Box>
           <Grid>
             {data?.map((el, i) => (
-              <GridItem key={el.id} padding='10px' border='1px solid grey' borderRadius='10px' width='80%' margin='auto' marginBottom='10px'>
+              <GridItem
+                key={el.id}
+                padding="10px"
+                border="1px solid grey"
+                borderRadius="10px"
+                width="80%"
+                margin="auto"
+                marginBottom="10px"
+              >
                 <Flex justifyContent="space-evenly">
                   <Image
                     src={el.image}
@@ -111,15 +168,19 @@ const Cart = () => {
                     </Text>
                   </Box>
                   <Box>
-                    <Text marginBottom='5px'>Quantity</Text>
-                    <Select placeholder="1">
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
+                    <Text marginBottom="5px">Quantity Selected : {el.quantity}</Text>
+                    <Select
+                      placeholder="Update Quantity"
+                      onChange={(e) => handleQty(e.target.value, el.id)}
+                    >
+                      <option value={1}>1</option>
+                      <option value={2}>2</option>
+                      <option value={3}>3</option>
+                      <option value={4}>4</option>
+                      <option value={5}>5</option>
                     </Select>
                   </Box>
-                  <Button>
+                  <Button onClick={()=>handleDeleteItem(el.id)}>
                     <DeleteIcon bg={color} />
                   </Button>
                 </Flex>
@@ -128,6 +189,16 @@ const Cart = () => {
           </Grid>
         </Box>
       )}
+
+      
+
+      <Box>
+        <Flex>
+          <Heading>Bag Total : {cartTotal}</Heading>
+        </Flex>
+      </Box>
+
+
       <Footer />
     </div>
   );
