@@ -2,7 +2,10 @@ import {
   Box,
   Button,
   Center,
+  Grid,
+  GridItem,
   Image,
+  Select,
   SimpleGrid,
   useColorModeValue,
 } from "@chakra-ui/react";
@@ -20,15 +23,22 @@ const HomeAndKitchen = () => {
   const color2 = useColorModeValue("gray.900", "gray.50");
   const color3 = useColorModeValue("white", "gray.900");
   const { page, handlePageChange } = useContext(AuthContext);
+  const [brand, setBrand] = useState("");
+  const sort = "price";
+  const [order, setOrder] = useState("");
 
-  const fetchData = (page) => {
+  const fetchData = (page, sort, order, brand) => {
     setLoading(true);
     axios
-      .get(`https://prickly-gold-robe.cyclic.app/homekitchen`,{
-        params : {
-          _page:page,
+      .get(`https://prickly-gold-robe.cyclic.app/homekitchen`, {
+        params: {
+          q: brand,
+          // title:name,
+          _sort: sort,
+          _order: order,
+          _page: page,
           _limit: 20,
-        }
+        },
       })
       .then((res) => {
         setData(res.data);
@@ -43,8 +53,8 @@ const HomeAndKitchen = () => {
   };
 
   useEffect(() => {
-    fetchData(page);
-  }, [page]);
+    fetchData(page, sort, order, brand);
+  }, [page, sort, order, brand]);
 
   if (loading === true) {
     return (
@@ -78,6 +88,44 @@ const HomeAndKitchen = () => {
   return (
     <div>
       <NewNavbar />
+      <Center>
+        <Grid templateColumns="repeat(2, 1fr)" gap={6} paddingTop="85px">
+          {/* <GridItem>
+            <InputGroup>
+              <InputRightElement
+                pointerEvents="none"
+                children={<Search2Icon color="gray.300" />}
+              />
+              <Input
+                type="text"
+                placeholder="Enter Product Name here"
+                onChange={(e) => setName(e.target.value)}
+              />
+            </InputGroup>
+          </GridItem> */}
+          <GridItem>
+            <Select
+              placeholder="Filter By Brand"
+              onChange={(e) => setBrand(e.target.value)}
+            >
+              <option value="Home Centre">HOME CENTRE</option>
+              <option value="Homefab India">HOMEFAB INDIA</option>
+              <option value="HOMEZ SPARROW">HOMEZ SPARROW</option>
+              <option value="Market 99">Market 99</option>
+              <option value="STELLAR HOME">STELLAR HOME</option>
+            </Select>
+          </GridItem>
+          <GridItem>
+            <Select
+              placeholder={`Sort By Price : ${order==="asc"? "📈": order==="desc"? "📉" :""}`}
+              onChange={(e) => setOrder(e.target.value)}
+            >
+              <option value="asc">Price Low to High</option>
+              <option value="desc">Price High to Low</option>
+            </Select>
+          </GridItem>
+        </Grid>
+      </Center>
       <Center>
         <SimpleGrid columns={[1, 2, 3, 4, 4, 4]} spacing={3} paddingTop="70px">
           {data?.map((el, i) => (

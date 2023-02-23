@@ -1,8 +1,15 @@
+// import { Search2Icon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
   Center,
+  Grid,
+  GridItem,
   Image,
+  // Input,
+  // InputGroup,
+  // InputRightElement,
+  Select,
   SimpleGrid,
   useColorModeValue,
 } from "@chakra-ui/react";
@@ -19,16 +26,24 @@ const Mens = () => {
   const [error, setError] = useState(false);
   const color2 = useColorModeValue("gray.900", "gray.50");
   const color3 = useColorModeValue("white", "gray.900");
-  const {page, handlePageChange} =useContext(AuthContext)
+  const { page, handlePageChange } = useContext(AuthContext);
+  // const [name, setName] = useState("");
+  const [brand, setBrand] = useState("");
+  const sort = "price";
+  const [order, setOrder] = useState("");
 
-  const fetchData = (page) => {
+  const fetchData = (page, sort, order, brand) => {
     setLoading(true);
     axios
-      .get(`https://prickly-gold-robe.cyclic.app/mens`,{
-        params : {
-          _page:page,
+      .get(`https://prickly-gold-robe.cyclic.app/mens`, {
+        params: {
+          q: brand,
+          // title:name,
+          _sort: sort,
+          _order: order,
+          _page: page,
           _limit: 20,
-        }
+        },
       })
       .then((res) => {
         setData(res.data);
@@ -43,8 +58,8 @@ const Mens = () => {
   };
 
   useEffect(() => {
-    fetchData(page);
-  }, [page]);
+    fetchData(page, sort, order, brand);
+  }, [page, sort, order, brand]);
 
   if (loading === true) {
     return (
@@ -79,7 +94,48 @@ const Mens = () => {
     <div>
       <NewNavbar />
       <Center>
-        <SimpleGrid columns={[1, 2, 3, 4, 4, 4]} spacing={3} paddingTop="70px">
+        <Grid templateColumns="repeat(2, 1fr)" gap={6} paddingTop="85px">
+          {/* <GridItem>
+            <InputGroup>
+              <InputRightElement
+                pointerEvents="none"
+                children={<Search2Icon color="gray.300" />}
+              />
+              <Input
+                type="text"
+                placeholder="Enter Product Name here"
+                onChange={(e) => setName(e.target.value)}
+              />
+            </InputGroup>
+          </GridItem> */}
+          <GridItem>
+            <Select
+              placeholder="Filter By Brand"
+              onChange={(e) => setBrand(e.target.value)}
+            >
+              <option value="Campus Sutra">CAMPUS SUTRA</option>
+              <option value="Ketch">KETCH</option>
+              <option value="LEVIS">LEVIS</option>
+              <option value="NIKE">NIKE</option>
+              <option value="PERFORMAX">PERFORMAX</option>
+              <option value="SUPERDRY">SUPERDRY</option>
+              <option value="Teamspirit">TEAMSPIRIT</option>
+            </Select>
+          </GridItem>
+          <GridItem>
+            <Select
+              placeholder={`Sort By Price : ${order==="asc"? "📈": order==="desc"? "📉" :""}`}
+              onChange={(e) => setOrder(e.target.value)}
+            >
+              <option value="asc">Price Low to High</option>
+              <option value="desc">Price High to Low</option>
+            </Select>
+          </GridItem>
+        </Grid>
+      </Center>
+
+      <Center>
+        <SimpleGrid columns={[1, 2, 3, 4, 4, 4]} spacing={3} paddingTop="15px">
           {data?.map((el, i) => (
             <ProductCard key={i} data={el} />
           ))}
@@ -93,8 +149,8 @@ const Mens = () => {
           bg={color2}
           color={color3}
           textTransform={"uppercase"}
-          onClick={()=>handlePageChange(-1)}
-          isDisabled={page===1}
+          onClick={() => handlePageChange(-1)}
+          isDisabled={page === 1}
           _hover={{
             transform: "translateY(2px)",
             boxShadow: "lg",
@@ -113,7 +169,9 @@ const Mens = () => {
           _hover={{
             boxShadow: "lg",
           }}
-        >{page}</Button>
+        >
+          {page}
+        </Button>
         <Button
           mt={8}
           size={"sm"}
@@ -121,8 +179,8 @@ const Mens = () => {
           bg={color2}
           color={color3}
           textTransform={"uppercase"}
-          onClick={()=>handlePageChange(1)}
-          isDisabled={page===3}
+          onClick={() => handlePageChange(1)}
+          isDisabled={page === 3}
           _hover={{
             transform: "translateY(2px)",
             boxShadow: "lg",
