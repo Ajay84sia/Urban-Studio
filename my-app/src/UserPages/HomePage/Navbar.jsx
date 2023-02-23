@@ -18,7 +18,7 @@ import { ChevronDownIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import LightModeLogo from "./Images/LightModeLogo.png";
 import DarkModeLogo from "./Images/DarkModeLogo.png";
 import { NavLink } from "react-router-dom";
-import { FaShoppingBag } from 'react-icons/fa';
+import { FaShoppingBag } from "react-icons/fa";
 export default function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
@@ -241,11 +241,17 @@ export default function Navbar() {
               <Hide below="lg">
                 <Tooltip hasArrow label="Your Bag is Empty" bg="gray.400">
                   <Button bg={useColorModeValue("white")} isDisabled>
-                  <FaShoppingBag/>
+                    <FaShoppingBag />
                   </Button>
                 </Tooltip>
               </Hide>
-
+              {/* <Button
+                colorScheme="gray"
+                onClick={() => console.log("remove user!")}
+                size="sm"
+              >
+                <Icon as={FiTrash2} fontSize="20" />
+              </Button> */}
               <Button onClick={toggleColorMode} bg={useColorModeValue("white")}>
                 {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
               </Button>

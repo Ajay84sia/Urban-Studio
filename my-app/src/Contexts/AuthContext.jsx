@@ -4,6 +4,10 @@ export const AuthContext = createContext();
 
 function AuthContextProvider({ children }) {
   const [isAuth, setIsAuth] = useState(false);
+  const [page, setPage] = useState(1);
+  const handlePageChange = (val) => {
+    setPage(page + val);
+  };
 
   const login = () => {
     setIsAuth(true);
@@ -14,7 +18,7 @@ function AuthContextProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ login, logout, isAuth }}>
+    <AuthContext.Provider value={{ login, logout, isAuth, page, handlePageChange }}>
       {children}
     </AuthContext.Provider>
   );
