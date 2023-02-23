@@ -15,6 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { MdLocalShipping } from "react-icons/md";
 import { useParams } from "react-router-dom";
+import { FaShoppingBag } from "react-icons/fa";
 import axios from "axios";
 
 export default function SingleProduct() {
@@ -144,7 +145,7 @@ export default function SingleProduct() {
                 boxShadow: "lg",
               }}
             >
-              Add to cart
+              <FaShoppingBag /> &nbsp; ADD TO BAG
             </Button>
 
             <Stack
