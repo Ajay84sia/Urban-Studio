@@ -12,9 +12,10 @@ import {
   Heading,
   SimpleGrid,
   useColorModeValue,
+  Center,
 } from "@chakra-ui/react";
 import { MdLocalShipping } from "react-icons/md";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { FaShoppingBag } from "react-icons/fa";
 import axios from "axios";
 
@@ -103,8 +104,8 @@ export default function SingleProduct() {
                 color={color1}
                 fontWeight={600}
                 fontSize={"3xl"}
-                textAlign='center'
-                marginTop='25px'
+                textAlign="center"
+                marginTop="25px"
               >
                 {data?.brand}
               </Text>
@@ -114,7 +115,7 @@ export default function SingleProduct() {
                 fontSize={"2xl"}
                 textAlign="center"
               >
-               GRAB AT - ₹ {data?.price} /-
+                GRAB AT - ₹ {data?.price} /-
               </Text>
               <Text
                 color={color1}
@@ -130,11 +131,11 @@ export default function SingleProduct() {
                 {data?.discount}
               </Text>
             </Box>
-
+            <Center>
             <Button
-              rounded={"none"}
               w={"full"}
               mt={8}
+              width="350px"
               size={"lg"}
               py={"7"}
               bg={color2}
@@ -147,6 +148,25 @@ export default function SingleProduct() {
             >
               <FaShoppingBag /> &nbsp; ADD TO BAG
             </Button>
+            </Center>
+            <Center>
+              <NavLink to={`/${endpoint}`}>
+              <Button
+                size={"md"}
+                width="150px"
+                py={"7"}
+                bg={color2}
+                color={color3}
+                textTransform={"uppercase"}
+                _hover={{
+                  transform: "translateY(2px)",
+                  boxShadow: "lg",
+                }}
+              >
+                Go Back
+              </Button>
+              </NavLink>
+            </Center>
 
             <Stack
               direction="row"
