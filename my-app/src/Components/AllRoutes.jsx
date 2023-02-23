@@ -11,6 +11,7 @@ import Home from "../UserPages/HomePage/Home";
 import NotFound from "../UserPages/NotFound";
 import SingleProduct from "../UserPages/SingleProduct";
 import AdminDashboard from "../AdminPages/AdminDashboard";
+import Cart from "../UserPages/Cart";
 
 const AllRoutes = () => {
   return (
@@ -25,6 +26,7 @@ const AllRoutes = () => {
         <Route path="/homekitchen" element={<HomeAndKitchen />}></Route>
         <Route path="/womens" element={<Womens />}></Route>
         <Route path="/admin" element={<AdminDashboard />}></Route>
+        <Route path="/cart" element={<Cart />}></Route>
         <Route path="/:endpoint/:id" element={<SingleProduct />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>

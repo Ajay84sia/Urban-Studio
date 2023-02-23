@@ -18,6 +18,8 @@ import { MdLocalShipping } from "react-icons/md";
 import { NavLink, useParams } from "react-router-dom";
 import { FaShoppingBag } from "react-icons/fa";
 import axios from "axios";
+import { useToast } from "@chakra-ui/react";
+
 
 export default function SingleProduct() {
   const { endpoint, id } = useParams();
@@ -27,7 +29,8 @@ export default function SingleProduct() {
   const color1 = useColorModeValue("#d1b080", "yellow");
   const color2 = useColorModeValue("gray.900", "gray.50");
   const color3 = useColorModeValue("white", "gray.900");
-
+  // const { handleCart } = useContext(AuthContext);
+  const toast = useToast();
   const fetchData = (endpoint, id) => {
     setLoading(true);
     axios
@@ -42,6 +45,16 @@ export default function SingleProduct() {
         setError(true);
         setLoading(false);
       });
+  };
+
+  const AddCart = (
+    data = { id: "", title: "", image: "", brand: "", price: "", quantity: 1 }
+  ) => {
+    return axios({
+      method: "post",
+      url: "https://serverjson-xw6d.onrender.com/cart",
+      data: data,
+    });
   };
 
   useEffect(() => {
@@ -132,39 +145,56 @@ export default function SingleProduct() {
               </Text>
             </Box>
             <Center>
-            <Button
-              w={"full"}
-              mt={8}
-              width="350px"
-              size={"lg"}
-              py={"7"}
-              bg={color2}
-              color={color3}
-              textTransform={"uppercase"}
-              _hover={{
-                transform: "translateY(2px)",
-                boxShadow: "lg",
-              }}
-            >
-              <FaShoppingBag /> &nbsp; ADD TO BAG
-            </Button>
-            </Center>
-            <Center>
-              <NavLink to={`/${endpoint}`}>
               <Button
-                size={"md"}
-                width="150px"
+                w={"full"}
+                mt={8}
+                width="350px"
+                size={"lg"}
                 py={"7"}
                 bg={color2}
                 color={color3}
                 textTransform={"uppercase"}
+                onClick={() => {
+                  toast({
+                    title: "Product Added in the Cart",
+                    status: "success",
+                    duration: 1000,
+                    isClosable: true,
+                  });
+
+                  let obj = {
+                    title: data.title,
+                    image: data.image,
+                    brand: data.brand,
+                    price: data.price,
+                    quantity: 1,
+                  };
+                  AddCart(obj);
+                }}
                 _hover={{
                   transform: "translateY(2px)",
                   boxShadow: "lg",
                 }}
               >
-                Go Back
+                <FaShoppingBag /> &nbsp; ADD TO BAG
               </Button>
+            </Center>
+            <Center>
+              <NavLink to={`/${endpoint}`}>
+                <Button
+                  size={"md"}
+                  width="150px"
+                  py={"7"}
+                  bg={color2}
+                  color={color3}
+                  textTransform={"uppercase"}
+                  _hover={{
+                    transform: "translateY(2px)",
+                    boxShadow: "lg",
+                  }}
+                >
+                  Go Back
+                </Button>
               </NavLink>
             </Center>
 

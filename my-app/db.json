@@ -3176,5 +3176,23 @@
       "discount": "(86% off)",
       "offer-price": "420"
     }
+  ],
+  "cart": [
+    {
+      "id": 1,
+      "title": "Zip-Front Tracksuit with Placement Logo",
+      "image": "https://assets.ajio.com/medias/sys_master/root/20221020/BM2v/63512952f997ddfdbd367050/nike_green_zip-front_tracksuit_with_placement_logo.jpg",
+      "brand": "NIKE",
+      "price": 3380,
+      "quantity": 1
+    },
+    {
+      "title": "Knit Shorts with Drawstring Waist",
+      "image": "https://assets.ajio.com/medias/sys_master/root/20230204/5loh/63dd9b79aeb269c6510f5371/ardeur_black_knit_shorts_with_drawstring_waist.jpg",
+      "brand": "Ardeur",
+      "price": "Ardeur",
+      "quantity": 1,
+      "id": 2
+    }
   ]
 }
