@@ -5,27 +5,25 @@ export const AuthContext = createContext();
 function AuthContextProvider({ children }) {
   const [isAuth, setIsAuth] = useState(false);
   const [page, setPage] = useState(1);
-  const [cart, setCart] = useState([]);
+  const [token, setToken] = useState("")
+
   const handlePageChange = (val) => {
     setPage(page + val);
   };
 
-  const login = () => {
+  const login = (token) => {
     setIsAuth(true);
+    setToken(token)
   };
 
   const logout = () => {
     setIsAuth(false);
+    setToken("")
   };
 
-  const handleCart = (item) =>{
-    let prod = [...cart, item]
-    setCart(prod)
-    console.log(cart)
-  }
 
   return (
-    <AuthContext.Provider value={{ login, logout, isAuth, page, handlePageChange, cart , handleCart}}>
+    <AuthContext.Provider value={{ login, logout, isAuth, page, handlePageChange, token}}>
       {children}
     </AuthContext.Provider>
   );

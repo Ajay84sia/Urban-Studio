@@ -12,24 +12,41 @@ import {
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import {  useContext, useState } from "react";
+import { Navigate } from "react-router-dom";
+import { AuthContext } from "../Contexts/AuthContext";
 import Footer from "./HomePage/Footer";
 import NewNavbar from "./HomePage/NewNavbar";
 
+
 export default function Login() {
   const [formData, setFormData] = useState({ email: "", password: "" });
-  const [userData, setUserData] = useState({});
+  const {login, isAuth} = useContext(AuthContext)
+  const color1 = useColorModeValue("gray.50", "gray.800")
+  const color2 = useColorModeValue("white", "gray.700")
 
-  const handlepostData = () => {
 
-      axios
-          .get(`https://prickly-gold-robe.cyclic.app/users`)
+  const handlepostData = (data) => {
+    fetch("https://reqres.in/api/login", {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data.token);
+        login(data.token)
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
-  useEffect(() => {
-    handlepostData();
-  }, []);
+  if(isAuth===true){
+    return <Navigate to='/'/>
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -51,7 +68,7 @@ export default function Login() {
         align={"center"}
         justify={"center"}
         paddingTop="25px"
-        bg={useColorModeValue("gray.50", "gray.800")}
+        bg={color1}
       >
         <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
           <Stack align={"center"}>
@@ -62,7 +79,7 @@ export default function Login() {
           </Stack>
           <Box
             rounded={"lg"}
-            bg={useColorModeValue("white", "gray.700")}
+            bg={color2}
             boxShadow={"lg"}
             p={8}
           >
@@ -97,6 +114,7 @@ export default function Login() {
                 <Button
                   bg={"blue.400"}
                   color={"white"}
+                  onClick={handleSubmit}
                   _hover={{
                     bg: "blue.500",
                   }}

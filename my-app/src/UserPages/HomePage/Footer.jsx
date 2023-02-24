@@ -29,13 +29,11 @@ export default function Footer() {
       color={useColorModeValue("gray.200", "gray.200")}
     >
       <Image
-        className="scaleImg"
         src="https://assets.ajio.com/cms/AJIO/WEB/13102020-D-unisex-ajiocares-strip.jpg"
         alt="above footer2"
         width="100vw"
       />
       <Image
-        className="scaleImg"
         src={Forfooter}
         alt="above footer1"
         width="100vw"
@@ -84,7 +82,6 @@ export default function Footer() {
       <Box py={10}>
 
         <Image
-          className="scaleImg"
           marginTop="-30px"
           src={FooterEnd}
           alt="above footer1"
