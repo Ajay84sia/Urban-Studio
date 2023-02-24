@@ -52,7 +52,7 @@ export default function SingleProduct() {
   ) => {
     return axios({
       method: "post",
-      url: "https://serverjson-xw6d.onrender.com/cart",
+      url: "https://newjsonserver.onrender.com/cart",
       data: data,
     });
   };
