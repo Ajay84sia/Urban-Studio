@@ -3,15 +3,10 @@ import {
   Box,
   Button,
   Center,
-  Grid,
-  GridItem,
   Image,
   Input,
   InputGroup,
   InputRightElement,
-  // Input,
-  // InputGroup,
-  // InputRightElement,
   Select,
   SimpleGrid,
   useColorModeValue,
@@ -30,7 +25,7 @@ const Mens = () => {
   const color2 = useColorModeValue("gray.900", "gray.50");
   const color3 = useColorModeValue("white", "gray.900");
   const { page, handlePageChange } = useContext(AuthContext);
-  const [name, setName] = useState("");
+  // const [name, setName] = useState("");
   const [brand, setBrand] = useState("");
   const sort = "price";
   const [order, setOrder] = useState("");
@@ -60,38 +55,38 @@ const Mens = () => {
       });
   };
 
-  const fetchSearch = (name, page, sort, order) => {
-    setLoading(true);
+  // const fetchSearch = (name, page, sort, order) => {
+  //   setLoading(true);
 
-    axios
-      .get(`https://prickly-gold-robe.cyclic.app/mens`, {
-        params: {
-          q: name,
-          _sort: sort,
-          _order: order,
-          _page: page,
-          _limit: 20,
-        },
-      })
-      .then((res) => {
-        setData(res.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        setError(err);
-        setError(true);
-        setLoading(false);
-      });
-  };
+  //   axios
+  //     .get(`https://prickly-gold-robe.cyclic.app/mens`, {
+  //       params: {
+  //         q: name,
+  //         _sort: sort,
+  //         _order: order,
+  //         _page: page,
+  //         _limit: 20,
+  //       },
+  //     })
+  //     .then((res) => {
+  //       setData(res.data);
+  //       setLoading(false);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //       setError(err);
+  //       setError(true);
+  //       setLoading(false);
+  //     });
+  // };
 
   useEffect(() => {
     fetchData(page, sort, order, brand);
   }, [page, sort, order, brand]);
 
-  useEffect(() => {
-    fetchSearch(name, page, sort, order);
-  }, [name, page, sort, order]);
+  // useEffect(() => {
+  //   fetchSearch(name, page, sort, order);
+  // }, [name, page, sort, order]);
 
   if (loading === true) {
     return (
@@ -126,8 +121,8 @@ const Mens = () => {
     <div>
       <NewNavbar />
       <Center>
-        <Grid templateColumns="repeat(2, 1fr)" gap={6} paddingTop="85px">
-          {/* <GridItem>
+        <SimpleGrid  columns={[1, 2, 3]} gap={6} paddingTop="85px">
+          <Box>
             <InputGroup>
               <InputRightElement
                 pointerEvents="none"
@@ -136,11 +131,11 @@ const Mens = () => {
               <Input
                 type="text"
                 placeholder="Enter Product Name here"
-                onChange={(e) => setName(e.target.value)}
+                // onChange={(e) => setName(e.target.value)}
               />
             </InputGroup>
-          </GridItem> */}
-          <GridItem>
+          </Box>
+          <Box>
             <Select
               placeholder="Filter By Brand"
               onChange={(e) => setBrand(e.target.value)}
@@ -153,8 +148,8 @@ const Mens = () => {
               <option value="SUPERDRY">SUPERDRY</option>
               <option value="Teamspirit">TEAMSPIRIT</option>
             </Select>
-          </GridItem>
-          <GridItem>
+          </Box>
+          <Box>
             <Select
               placeholder={`Sort By Price : ${
                 order === "asc" ? "📈" : order === "desc" ? "📉" : ""
@@ -164,8 +159,8 @@ const Mens = () => {
               <option value="asc">Price Low to High</option>
               <option value="desc">Price High to Low</option>
             </Select>
-          </GridItem>
-        </Grid>
+          </Box>
+        </SimpleGrid>
       </Center>
 
       <Center>

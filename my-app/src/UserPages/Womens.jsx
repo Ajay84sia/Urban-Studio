@@ -2,9 +2,10 @@ import {
   Box,
   Button,
   Center,
-  Grid,
-  GridItem,
   Image,
+  Input,
+  InputGroup,
+  InputRightElement,
   Select,
   SimpleGrid,
   useColorModeValue,
@@ -15,6 +16,7 @@ import Footer from "./HomePage/Footer";
 import NewNavbar from "./HomePage/NewNavbar";
 import { AuthContext } from "../Contexts/AuthContext";
 import ProductCard from "./ProductCard";
+import { Search2Icon } from "@chakra-ui/icons";
 
 const Womens = () => {
   const [data, setData] = useState([]);
@@ -89,8 +91,8 @@ const Womens = () => {
     <div>
       <NewNavbar />
       <Center>
-        <Grid templateColumns="repeat(2, 1fr)" gap={6} paddingTop="85px">
-          {/* <GridItem>
+        <SimpleGrid columns={[1, 2, 3]} gap={6} paddingTop="85px">
+          <Box>
             <InputGroup>
               <InputRightElement
                 pointerEvents="none"
@@ -99,11 +101,11 @@ const Womens = () => {
               <Input
                 type="text"
                 placeholder="Enter Product Name here"
-                onChange={(e) => setName(e.target.value)}
+                // onChange={(e) => setName(e.target.value)}
               />
             </InputGroup>
-          </GridItem> */}
-          <GridItem>
+          </Box>
+          <Box>
             <Select
               placeholder="Filter By Brand"
               onChange={(e) => setBrand(e.target.value)}
@@ -116,20 +118,22 @@ const Womens = () => {
               <option value="Janasya">JANASYA</option>
               <option value="Teamspirit">TEAMSPIRIT</option>
             </Select>
-          </GridItem>
-          <GridItem>
+          </Box>
+          <Box>
             <Select
-              placeholder={`Sort By Price : ${order==="asc"? "📈": order==="desc"? "📉" :""}`}
+              placeholder={`Sort By Price : ${
+                order === "asc" ? "📈" : order === "desc" ? "📉" : ""
+              }`}
               onChange={(e) => setOrder(e.target.value)}
             >
               <option value="asc">Price Low to High</option>
               <option value="desc">Price High to Low</option>
             </Select>
-          </GridItem>
-        </Grid>
+          </Box>
+        </SimpleGrid>
       </Center>
       <Center>
-        <SimpleGrid columns={[1, 2, 3, 4, 4, 4]} spacing={3} paddingTop="70px">
+        <SimpleGrid columns={[1, 2, 3, 4, 4, 4]} spacing={3} paddingTop="15px">
           {data?.map((el, i) => (
             <ProductCard key={i} data={el} />
           ))}

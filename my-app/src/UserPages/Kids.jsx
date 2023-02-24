@@ -1,10 +1,12 @@
+import { Search2Icon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
   Center,
-  Grid,
-  GridItem,
   Image,
+  Input,
+  InputGroup,
+  InputRightElement,
   Select,
   SimpleGrid,
   useColorModeValue,
@@ -89,8 +91,8 @@ const Kids = () => {
     <div>
       <NewNavbar />
       <Center>
-        <Grid templateColumns="repeat(2, 1fr)" gap={6} paddingTop="85px">
-          {/* <GridItem>
+      <SimpleGrid columns={[1, 2, 3]} gap={6} paddingTop="85px">
+          <Box>
             <InputGroup>
               <InputRightElement
                 pointerEvents="none"
@@ -99,11 +101,11 @@ const Kids = () => {
               <Input
                 type="text"
                 placeholder="Enter Product Name here"
-                onChange={(e) => setName(e.target.value)}
+                // onChange={(e) => setName(e.target.value)}
               />
             </InputGroup>
-          </GridItem> */}
-          <GridItem>
+          </Box>
+          <Box>
             <Select
               placeholder="Filter By Brand"
               onChange={(e) => setBrand(e.target.value)}
@@ -114,8 +116,8 @@ const Kids = () => {
               <option value="KG FRENDZ">KG FRENDZ</option>
               <option value="RIO GIRLS">RIO GIRLS</option>
             </Select>
-          </GridItem>
-          <GridItem>
+          </Box>
+          <Box>
             <Select
               placeholder={`Sort By Price : ${order==="asc"? "📈": order==="desc"? "📉" :""}`}
               onChange={(e) => setOrder(e.target.value)}
@@ -123,11 +125,11 @@ const Kids = () => {
               <option value="asc">Price Low to High</option>
               <option value="desc">Price High to Low</option>
             </Select>
-          </GridItem>
-        </Grid>
+          </Box>
+        </SimpleGrid>
       </Center>
       <Center>
-        <SimpleGrid columns={[1, 2, 3, 4, 4, 4]} spacing={3} paddingTop="70px">
+        <SimpleGrid columns={[1, 2, 3, 4, 4, 4]} spacing={3} paddingTop="15px">
           {data?.map((el, i) => (
             <ProductCard key={i} data={el} />
           ))}
