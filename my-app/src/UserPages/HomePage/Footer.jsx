@@ -63,11 +63,11 @@ export default function Footer() {
           </Stack>
           <Stack align={"flex-start"}>
             <ListHeader>Shop by</ListHeader>
-            <Link href={"/men"}>Men</Link>
-            <Link href={"/women"}>Women</Link>
+            <Link href={"/mens"}>Men</Link>
+            <Link href={"/womens"}>Women</Link>
             <Link href={"/kids"}>Kids</Link>
             <Link href={"/indie"}>Indie</Link>
-            <Link href={"/homekitchen"}>Home</Link>
+            <Link href={"/homekitchen"}>Home Decor</Link>
             <Link href={"/"}>Stores</Link>
           </Stack>
           <Stack align={"flex-start"}>

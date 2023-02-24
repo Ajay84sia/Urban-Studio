@@ -12,6 +12,8 @@ import NotFound from "../UserPages/NotFound";
 import SingleProduct from "../UserPages/SingleProduct";
 import AdminDashboard from "../AdminPages/AdminDashboard";
 import Cart from "../UserPages/Cart";
+import Payment from "../UserPages/Payment";
+import Final from "../UserPages/Final";
 
 const AllRoutes = () => {
   return (
@@ -27,6 +29,9 @@ const AllRoutes = () => {
         <Route path="/womens" element={<Womens />}></Route>
         <Route path="/admin" element={<AdminDashboard />}></Route>
         <Route path="/cart" element={<Cart />}></Route>
+        <Route path="/payment" element={<Payment />}></Route>
+        <Route path="/final" element={<Final />}></Route>
+
         <Route path="/:endpoint/:id" element={<SingleProduct />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>

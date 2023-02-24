@@ -15,6 +15,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import Footer from "./HomePage/Footer";
 import NewNavbar from "./HomePage/NewNavbar";
 
@@ -25,9 +26,10 @@ const Cart = () => {
   const color = useColorModeValue("white");
   const color1 = useColorModeValue("#d1b080", "yellow");
   const color2 = useColorModeValue("gray.900", "gray.50");
+  const color3 = useColorModeValue("white", "gray.900");
   const toast = useToast();
-  const [cartTotal, setCartTotal] = useState(0)
-  
+  const [cartTotal, setCartTotal] = useState(0);
+
   const fetchData = () => {
     setLoading(true);
     axios
@@ -68,31 +70,29 @@ const Cart = () => {
       .then((json) => fetchData());
   };
 
-  const handleCartTotal = () =>{
-
+  const handleCartTotal = () => {
     const total = data.reduce((acc, item) => {
       return acc + item.price * item.quantity;
     }, 0);
-    
 
-    setCartTotal(total)
-  }
+    setCartTotal(total);
+  };
 
-  useEffect(()=>{
-    handleCartTotal()
-  })
+  useEffect(() => {
+    handleCartTotal();
+  });
 
   const handleDeleteItem = (id) => {
-    fetch(`https://serverjson-xw6d.onrender.com/cart/${id}`,
-    { method: 'DELETE' })
-   .then(() => fetchData());
-   toast({
-    title: `Product removed from the cart`,
-    status: "info",
-    duration: 1000,
-    isClosable: true,
-  });
-  }
+    fetch(`https://serverjson-xw6d.onrender.com/cart/${id}`, {
+      method: "DELETE",
+    }).then(() => fetchData());
+    toast({
+      title: `Product removed from the cart`,
+      status: "error",
+      duration: 1000,
+      isClosable: true,
+    });
+  };
 
   if (loading === true) {
     return (
@@ -163,12 +163,19 @@ const Cart = () => {
                   <Box width="260px">
                     <Text color={color1}>{el.brand}</Text>
                     <Text>{el.title}</Text>
-                    <Text color={color2} fontWeight="bold">
-                      ₹ {el.price}
-                    </Text>
+                    <Flex>
+                      <Text color={color2} fontWeight="bold">
+                        ₹ {el.price} &nbsp;
+                      </Text>
+                      <Text textDecoration="line-through" color={color1}>
+                        ({el.originalprice})
+                      </Text>
+                    </Flex>
                   </Box>
                   <Box>
-                    <Text marginBottom="5px">Quantity Selected : {el.quantity}</Text>
+                    <Text marginBottom="5px">
+                      Quantity Selected : {el.quantity}
+                    </Text>
                     <Select
                       placeholder="Update Quantity"
                       onChange={(e) => handleQty(e.target.value, el.id)}
@@ -180,7 +187,7 @@ const Cart = () => {
                       <option value={5}>5</option>
                     </Select>
                   </Box>
-                  <Button onClick={()=>handleDeleteItem(el.id)}>
+                  <Button onClick={() => handleDeleteItem(el.id)}>
                     <DeleteIcon bg={color} />
                   </Button>
                 </Flex>
@@ -190,15 +197,30 @@ const Cart = () => {
         </Box>
       )}
 
-      
-
-      <Box>
+      <Center width="80%" margin="auto" marginBottom="18px">
         <Flex>
-          <Heading>Bag Total : {cartTotal}</Heading>
+          <Heading>Bag Total : &nbsp; ₹{cartTotal}/-</Heading>
         </Flex>
-      </Box>
-
-
+      </Center>
+      <Center>
+        <NavLink to="/payment">
+          <Button
+            size={"md"}
+            width="150px"
+            py={"7"}
+            bg={color2}
+            color={color3}
+            textTransform={"uppercase"}
+            marginBottom={"20px"}
+            _hover={{
+              transform: "translateY(2px)",
+              boxShadow: "lg",
+            }}
+          >
+            CHECKOUT
+          </Button>
+        </NavLink>
+      </Center>
       <Footer />
     </div>
   );

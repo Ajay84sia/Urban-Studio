@@ -167,6 +167,7 @@ export default function SingleProduct() {
                     image: data.image,
                     brand: data.brand,
                     price: data.price,
+                    originalprice : data.originalprice,
                     quantity: 1,
                   };
                   AddCart(obj);

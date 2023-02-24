@@ -30,7 +30,7 @@ import LightModeLogo from "./Images/LightModeLogo.png";
 import DarkModeLogo from "./Images/DarkModeLogo.png";
 import { FaShoppingBag } from "react-icons/fa";
 
-export default function NewNavbar() {
+export default function AdminNavbar() {
   const { isOpen, onToggle } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
 
@@ -82,17 +82,6 @@ export default function NewNavbar() {
           direction={"row"}
           spacing={6}
         >
-          <Hide below="md">
-            <Button
-              as={"a"}
-              fontSize={"sm"}
-              fontWeight={400}
-              variant={"link"}
-              href={"/login"}
-            >
-              Sign In
-            </Button>
-          </Hide>
           <Button
             as={"a"}
             display={{ base: "none", md: "inline-flex" }}
@@ -100,20 +89,13 @@ export default function NewNavbar() {
             fontWeight={600}
             color={"white"}
             bg={"teal.400"}
-            href={"/register"}
+            href={"/login"}
             _hover={{
               bg: "pink.300",
             }}
           >
-            Sign Up
+            Admin Sign In
           </Button>
-          <Hide below="lg">
-            <NavLink to="/cart">
-              <Button bg={useColorModeValue("white")}>
-                <FaShoppingBag />
-              </Button>
-            </NavLink>
-          </Hide>
 
           <Button onClick={toggleColorMode} bg={useColorModeValue("white")}>
             {colorMode === "light" ? <MoonIcon /> : <SunIcon />}

@@ -1,4 +1,4 @@
-// import { Search2Icon } from "@chakra-ui/icons";
+import { Search2Icon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
@@ -6,6 +6,9 @@ import {
   Grid,
   GridItem,
   Image,
+  Input,
+  InputGroup,
+  InputRightElement,
   // Input,
   // InputGroup,
   // InputRightElement,
@@ -27,18 +30,43 @@ const Mens = () => {
   const color2 = useColorModeValue("gray.900", "gray.50");
   const color3 = useColorModeValue("white", "gray.900");
   const { page, handlePageChange } = useContext(AuthContext);
-  // const [name, setName] = useState("");
+  const [name, setName] = useState("");
   const [brand, setBrand] = useState("");
   const sort = "price";
   const [order, setOrder] = useState("");
 
   const fetchData = (page, sort, order, brand) => {
     setLoading(true);
+
     axios
       .get(`https://prickly-gold-robe.cyclic.app/mens`, {
         params: {
           q: brand,
-          search : "Knit",
+          _sort: sort,
+          _order: order,
+          _page: page,
+          _limit: 20,
+        },
+      })
+      .then((res) => {
+        setData(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setError(err);
+        setError(true);
+        setLoading(false);
+      });
+  };
+
+  const fetchSearch = (name, page, sort, order) => {
+    setLoading(true);
+
+    axios
+      .get(`https://prickly-gold-robe.cyclic.app/mens`, {
+        params: {
+          q: name,
           _sort: sort,
           _order: order,
           _page: page,
@@ -60,6 +88,10 @@ const Mens = () => {
   useEffect(() => {
     fetchData(page, sort, order, brand);
   }, [page, sort, order, brand]);
+
+  useEffect(() => {
+    fetchSearch(name, page, sort, order);
+  }, [name, page, sort, order]);
 
   if (loading === true) {
     return (
@@ -124,7 +156,9 @@ const Mens = () => {
           </GridItem>
           <GridItem>
             <Select
-              placeholder={`Sort By Price : ${order==="asc"? "📈": order==="desc"? "📉" :""}`}
+              placeholder={`Sort By Price : ${
+                order === "asc" ? "📈" : order === "desc" ? "📉" : ""
+              }`}
               onChange={(e) => setOrder(e.target.value)}
             >
               <option value="asc">Price Low to High</option>
