@@ -12,10 +12,37 @@ import {
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import Footer from "./HomePage/Footer";
 import NewNavbar from "./HomePage/NewNavbar";
 
 export default function Login() {
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [userData, setUserData] = useState({});
+
+  const handlepostData = () => {
+
+      axios
+          .get(`https://prickly-gold-robe.cyclic.app/users`)
+  };
+
+  useEffect(() => {
+    handlepostData();
+  }, []);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handlepostData(formData);
+  };
+
+  const { email, password } = formData;
   return (
     <>
       <NewNavbar />
@@ -42,11 +69,21 @@ export default function Login() {
             <Stack spacing={4}>
               <FormControl id="email">
                 <FormLabel>Email address</FormLabel>
-                <Input type="email" />
+                <Input
+                  type="email"
+                  name="email"
+                  value={email}
+                  onChange={handleChange}
+                />
               </FormControl>
               <FormControl id="password">
                 <FormLabel>Password</FormLabel>
-                <Input type="password" />
+                <Input
+                  type="password"
+                  name="password"
+                  value={password}
+                  onChange={handleChange}
+                />
               </FormControl>
               <Stack spacing={10}>
                 <Stack

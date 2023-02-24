@@ -33,7 +33,7 @@ const Cart = () => {
   const fetchData = () => {
     setLoading(true);
     axios
-      .get(`https://serverjson-xw6d.onrender.com/cart`)
+      .get(`https://newjsonserver.onrender.com/cart`)
       .then((res) => {
         setData(res.data);
         setLoading(false);
@@ -57,7 +57,7 @@ const Cart = () => {
       duration: 1000,
       isClosable: true,
     });
-    fetch(`https://serverjson-xw6d.onrender.com/cart/${id}`, {
+    fetch(`https://newjsonserver.onrender.com/cart/${id}`, {
       method: "PATCH",
       body: JSON.stringify({
         quantity: value,
@@ -83,7 +83,7 @@ const Cart = () => {
   });
 
   const handleDeleteItem = (id) => {
-    fetch(`https://serverjson-xw6d.onrender.com/cart/${id}`, {
+    fetch(`https://newjsonserver.onrender.com/cart/${id}`, {
       method: "DELETE",
     }).then(() => fetchData());
     toast({
