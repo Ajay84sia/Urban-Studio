@@ -1,5 +1,6 @@
 import { Box, Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
 import React from "react";
+import AdminAddProducts from "./AdminAddProducts";
 import AdminAllProducts from "./AdminAllProducts";
 import AdminFooter from "./AdminFooter";
 import AdminNavbar from "./AdminNavbar";
@@ -25,7 +26,7 @@ const AdminDashboard = () => {
               <AdminAllProducts/>
             </TabPanel>
             <TabPanel>
-              <p>Add Products</p>
+              <AdminAddProducts/>
             </TabPanel>
             <TabPanel>
               <AdminRemoveProducts/>

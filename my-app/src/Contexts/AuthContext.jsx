@@ -10,6 +10,8 @@ const AuthContextProvider =({ children })=>{
     setPage(page + val);
   };
 
+  
+
   const login = () => {
     setIsAuth(true);
 

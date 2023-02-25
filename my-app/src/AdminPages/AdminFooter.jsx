@@ -1,7 +1,6 @@
 import {
   Box,
   Container,
-  Link,
   SimpleGrid,
   Stack,
   Text,
@@ -12,6 +11,8 @@ import {
 // import { ReactNode } from 'react';
 import Forfooter from "./Images/Forfooter.png";
 import FooterEnd from "./Images/FooterEnd.png";
+import { NavLink } from "react-router-dom";
+
 
 const ListHeader = ({ children }) => {
   return (
@@ -38,38 +39,38 @@ export default function AdminFooter() {
           <SimpleGrid columns={{ base: 2, sm: 2, md: 4 }} spacing={8}>
             <Stack align={"flex-start"}>
               <ListHeader>Urban Studio</ListHeader>
-              <Link href={"#"}>Who We Are</Link>
-              <Link href={"#"}>Join Our Team</Link>
-              <Link href={"#"}>Terms & Conditions</Link>
-              <Link href={"#"}>Fees & Payments</Link>
-              <Link href={"#"}>Returns & Refunds</Link>
-              <Link href={"/"}>HomePage</Link>
+              <NavLink to={"#"}>Who We Are</NavLink>
+              <NavLink to={"#"}>Join Our Team</NavLink>
+              <NavLink to={"#"}>Terms & Conditions</NavLink>
+              <NavLink to={"#"}>Fees & Payments</NavLink>
+              <NavLink to={"#"}>Returns & Refunds</NavLink>
+              <NavLink to={"/"}>HomePage</NavLink>
             </Stack>
             <Stack align={"flex-start"}>
               <ListHeader>Help</ListHeader>
-              <Link href={"#"}>Track Your Order</Link>
-              <Link href={"#"}>FAQs</Link>
-              <Link href={"#"}>Returns</Link>
-              <Link href={"#"}>Cancellations</Link>
-              <Link href={"#"}>Payments</Link>
-              <Link href={"#"}>Customer Care</Link>
+              <NavLink to={"#"}>Track Your Order</NavLink>
+              <NavLink to={"#"}>FAQs</NavLink>
+              <NavLink to={"#"}>Returns</NavLink>
+              <NavLink to={"#"}>Cancellations</NavLink>
+              <NavLink to={"#"}>Payments</NavLink>
+              <NavLink to={"#"}>Customer Care</NavLink>
             </Stack>
             <Stack align={"flex-start"}>
               <ListHeader>Shop by</ListHeader>
-              <Link href={"/mens"}>Men</Link>
-              <Link href={"/womens"}>Women</Link>
-              <Link href={"/kids"}>Kids</Link>
-              <Link href={"/indie"}>Indie</Link>
-              <Link href={"/homekitchen"}>Home Decor</Link>
-              <Link href={"/"}>Stores</Link>
+              <NavLink to={"/mens"}>Men</NavLink>
+              <NavLink to={"/womens"}>Women</NavLink>
+              <NavLink to={"/kids"}>Kids</NavLink>
+              <NavLink to={"/indie"}>Indie</NavLink>
+              <NavLink to={"/homekitchen"}>Home Decor</NavLink>
+              <NavLink to={"/"}>Stores</NavLink>
             </Stack>
             <Stack align={"flex-start"}>
               <ListHeader>Follow Us</ListHeader>
-              <Link href={"#"}>Facebook</Link>
-              <Link href={"#"}>Instagram</Link>
-              <Link href={"#"}>Twitter</Link>
-              <Link href={"#"}>Pinterest</Link>
-              <Link href={"#"}>LinkedIn</Link>
+              <NavLink to={"#"}>Facebook</NavLink>
+              <NavLink to={"#"}>Instagram</NavLink>
+              <NavLink to={"#"}>Twitter</NavLink>
+              <NavLink to={"#"}>Pinterest</NavLink>
+              <NavLink to={"#"}>NavLinkedIn</NavLink>
             </Stack>
           </SimpleGrid>
         </Container>

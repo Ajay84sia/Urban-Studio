@@ -77,11 +77,12 @@ const AdminAllProducts = () => {
 
   return (
     <div>
+        
         <Heading textAlign='center'>All Products Data</Heading>
         <br/>
       <Center>
         <Select
-          placeholder="Select Products Category"
+          placeholder="Select Product Category"
           onChange={(e) => setEndPoint(e.target.value)}
         >
           <option value="mens">Mens Products</option>
