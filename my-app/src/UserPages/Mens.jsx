@@ -30,6 +30,8 @@ const Mens = () => {
   const sort = "price";
   const [order, setOrder] = useState("");
 
+
+
   const fetchData = (page, sort, order, brand) => {
     setLoading(true);
 
@@ -87,6 +89,7 @@ const Mens = () => {
   // useEffect(() => {
   //   fetchSearch(name, page, sort, order);
   // }, [name, page, sort, order]);
+
 
   if (loading === true) {
     return (

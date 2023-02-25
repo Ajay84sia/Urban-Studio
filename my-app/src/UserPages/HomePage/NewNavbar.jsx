@@ -7,7 +7,6 @@ import {
   Stack,
   Collapse,
   Icon,
-  Link,
   Popover,
   PopoverTrigger,
   useColorMode,
@@ -16,6 +15,7 @@ import {
   useDisclosure,
   Image,
   Hide,
+  useToast,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -25,15 +25,18 @@ import {
   MoonIcon,
   SunIcon,
 } from "@chakra-ui/icons";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import LightModeLogo from "./Images/LightModeLogo.png";
 import DarkModeLogo from "./Images/DarkModeLogo.png";
 import { FaShoppingBag } from "react-icons/fa";
+import { useContext } from "react";
+import { AuthContext } from "../../Contexts/AuthContext";
 
 export default function NewNavbar() {
   const { isOpen, onToggle } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
-
+  const { isAuth, logout } = useContext(AuthContext);
+  const toast = useToast();
   return (
     <Box style={{ position: "fixed", width: "100%", zIndex: "5" }}>
       <Flex
@@ -82,13 +85,68 @@ export default function NewNavbar() {
           direction={"row"}
           spacing={6}
         >
-          <Hide below="md">
+          {isAuth === true ? (
+            <NavLink to="/">
+              <Button
+                as={"a"}
+                display={{ base: "none", md: "inline-flex" }}
+                fontSize={"sm"}
+                fontWeight={600}
+                color={"white"}
+                bg={"teal.400"}
+                onClick={() => {
+                  logout();
+                  toast({
+                    title: `Sign Out Successful`,
+                    status: "success",
+                    duration: 1000,
+                    isClosable: true,
+                  });
+                }}
+                href={"/"}
+                _hover={{
+                  bg: "pink.300",
+                }}
+              >
+                Sign Out
+              </Button>
+            </NavLink>
+          ) : (
+            <>
+              <Hide below="md">
+                <Button
+                  as={"a"}
+                  fontSize={"sm"}
+                  fontWeight={400}
+                  variant={"link"}
+                  href={"/login"}
+                >
+                  Sign In
+                </Button>
+              </Hide>
+              <Button
+                as={"a"}
+                display={{ base: "none", md: "inline-flex" }}
+                fontSize={"sm"}
+                fontWeight={600}
+                color={"white"}
+                bg={"teal.400"}
+                href={"/register"}
+                _hover={{
+                  bg: "pink.300",
+                }}
+              >
+                Sign Up
+              </Button>
+            </>
+          )}
+          {/* <Hide below="md">
             <Button
               as={"a"}
               fontSize={"sm"}
               fontWeight={400}
               variant={"link"}
-              href={"/login"}
+              to={"/login"}
             >
               Sign In
             </Button>
@@ -100,13 +158,13 @@ export default function NewNavbar() {
             fontWeight={600}
             color={"white"}
             bg={"teal.400"}
-            href={"/register"}
+            to={"/register"}
             _hover={{
               bg: "pink.300",
             }}
           >
             Sign Up
-          </Button>
+          </Button> */}
           <Hide below="lg">
             <NavLink to="/cart">
               <Button bg={useColorModeValue("white")}>
@@ -114,7 +172,6 @@ export default function NewNavbar() {
               </Button>
             </NavLink>
           </Hide>
-
           <Button onClick={toggleColorMode} bg={useColorModeValue("white")}>
             {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
           </Button>
@@ -141,7 +198,7 @@ const DesktopNav = () => {
             <PopoverTrigger>
               <Link
                 p={2}
-                href={navItem.href ?? "#"}
+                to={navItem.to ?? "#"}
                 fontSize={"sm"}
                 fontWeight={500}
                 color={linkColor}
@@ -177,10 +234,10 @@ const DesktopNav = () => {
   );
 };
 
-const DesktopSubNav = ({ label, href, subLabel }) => {
+const DesktopSubNav = ({ label, to, subLabel }) => {
   return (
     <Link
-      href={href}
+      to={to}
       role={"group"}
       display={"block"}
       p={2}
@@ -228,7 +285,7 @@ const MobileNav = () => {
   );
 };
 
-const MobileNavItem = ({ label, children, href }) => {
+const MobileNavItem = ({ label, children, to }) => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
@@ -236,7 +293,7 @@ const MobileNavItem = ({ label, children, href }) => {
       <Flex
         py={2}
         as={Link}
-        href={href ?? "#"}
+        to={to ?? "#"}
         justify={"space-between"}
         align={"center"}
         _hover={{
@@ -271,7 +328,7 @@ const MobileNavItem = ({ label, children, href }) => {
         >
           {children &&
             children.map((child) => (
-              <Link key={child.label} py={2} href={child.href}>
+              <Link key={child.label} py={2} to={child.to}>
                 {child.label}
               </Link>
             ))}
@@ -284,95 +341,95 @@ const MobileNavItem = ({ label, children, href }) => {
 const NAV_ITEMS = [
   {
     label: "MEN",
-    href: "/mens",
+    to: "/mens",
     children: [
       {
         label: "Western Wear",
         subLabel:
           "Jackets / Coats / Jeans / Shirts / Sweatshirts / Hoodies / Track Pants / Trousers / Pants / T-Shirts",
-        href: "/mens",
+        to: "/mens",
       },
       {
         label: "Foot Wear",
         subLabel:
           "Casual / Shoes / Flip-Flops / Slippers / Formal Shoes / Sandals / Sneakers / Sports Shoes",
-        href: "/mens",
+        to: "/mens",
       },
     ],
   },
   {
     label: "WOMEN",
-    href: "/womens",
+    to: "/womens",
     children: [
       {
         label: "Fusion Wear",
         subLabel:
           "Dresses / Gowns / Kurtas / Kurtis / Pants / Shorts / Jackets / Shrugs / Shirts / Tops / Tunics",
-        href: "/womens",
+        to: "/womens",
       },
       {
         label: "Foot Wear",
         subLabel:
           "Casual Shoes / Flat Sandals / Sports Shoes / Slippers / Heeled Sandals / Heeled Shoes / Boots",
-        href: "/womens",
+        to: "/womens",
       },
     ],
   },
   {
     label: "KIDS",
-    href: "/kids",
+    to: "/kids",
     children: [
       {
         label: "BOYS",
         subLabel:
           "Denims & Trousers / Joggers & Track Pants / Outerwear / Shirts / Shorts & 3/4ths / T-Shirts",
-        href: "/kids",
+        to: "/kids",
       },
       {
         label: "GIRLS",
         subLabel:
           "Dresses & Frocks / Jeans & Jeggings / Leggings / Outerwear / Skirts & Shorts / Tops & T-Shirts",
-        href: "/kids",
+        to: "/kids",
       },
     ],
   },
   {
     label: "INDIE",
-    href: "/indie",
+    to: "/indie",
     children: [
       {
         label: "WOMENS WEAR",
         subLabel:
           "Sarees / Kurtas / Dresses / Tops & Tunics / Dupattas / Dress Materials / Blouses & Blouse Fabrics / Pants, Skirts & Palazzos",
-        href: "/indie",
+        to: "/indie",
       },
       {
         label: "MENS WEAR",
         subLabel: "Kurtas / Shirts / Ethnic / Suits / Jacket / Accessories",
-        href: "/indie",
+        to: "/indie",
       },
     ],
   },
   {
     label: "DECOR",
-    href: "/homekitchen",
+    to: "/homekitchen",
     children: [
       {
         label: "Kitchen",
         subLabel:
           "Cookware & Cutlery / Bakeware / Kitchen Tools / Kitchen Aprons, Gloves & Towel / Kitchen Organisers",
-        href: "/homekitchen",
+        to: "/homekitchen",
       },
       {
         label: "Home Decor",
         subLabel:
           "Window Curtains / Door Curtains / Cushions / Pillows / Cushion Covers / Pillow Covers",
-        href: "/homekitchen",
+        to: "/homekitchen",
       },
       {
         label: "Join Us",
         subLabel: "Register on Urban Studio",
-        href: "/register",
+        to: "/register",
       },
     ],
   },
