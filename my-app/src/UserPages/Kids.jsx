@@ -32,7 +32,7 @@ const Kids = () => {
   const fetchData = (page, sort, order, brand) => {
     setLoading(true);
     axios
-      .get(`https://prickly-gold-robe.cyclic.app/kids`, {
+      .get(`https://newjsonserver.onrender.com/kids`, {
         params: {
           q: brand,
           // title:name,

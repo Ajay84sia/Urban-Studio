@@ -32,7 +32,7 @@ const HomeAndKitchen = () => {
   const fetchData = (page, sort, order, brand) => {
     setLoading(true);
     axios
-      .get(`https://prickly-gold-robe.cyclic.app/homekitchen`, {
+      .get(`https://newjsonserver.onrender.com/homekitchen`, {
         params: {
           q: brand,
           // title:name,

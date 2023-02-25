@@ -32,7 +32,7 @@ const Indie = () => {
   const fetchData = (page, sort, order, brand) => {
     setLoading(true);
     axios
-      .get(`https://prickly-gold-robe.cyclic.app/indie`, {
+      .get(`https://newjsonserver.onrender.com/indie`, {
         params: {
           q: brand,
           // title:name,

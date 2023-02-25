@@ -32,7 +32,7 @@ const Womens = () => {
   const fetchData = (page, sort, order, brand) => {
     setLoading(true);
     axios
-      .get(`https://prickly-gold-robe.cyclic.app/womens`, {
+      .get(`https://newjsonserver.onrender.com/womens`, {
         params: {
           q: brand,
           // title:name,

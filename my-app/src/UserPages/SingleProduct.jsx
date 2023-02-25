@@ -34,7 +34,7 @@ export default function SingleProduct() {
   const fetchData = (endpoint, id) => {
     setLoading(true);
     axios
-      .get(`https://prickly-gold-robe.cyclic.app/${endpoint}/${id}`)
+      .get(`https://newjsonserver.onrender.com/${endpoint}/${id}`)
       .then((res) => {
         setData(res.data);
         setLoading(false);
