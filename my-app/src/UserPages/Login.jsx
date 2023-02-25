@@ -11,9 +11,11 @@ import {
   Heading,
   Text,
   useColorModeValue,
+  useToast,
 } from "@chakra-ui/react";
 import {  useContext, useState } from "react";
 import { Navigate } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
 import { AuthContext } from "../Contexts/AuthContext";
 import Footer from "./HomePage/Footer";
 import NewNavbar from "./HomePage/NewNavbar";
@@ -24,7 +26,7 @@ export default function Login() {
   const {login, isAuth} = useContext(AuthContext)
   const color1 = useColorModeValue("gray.50", "gray.800")
   const color2 = useColorModeValue("white", "gray.700")
-
+  const toast = useToast();
 
   const handlepostData = (data) => {
     fetch("https://reqres.in/api/login", {
@@ -37,15 +39,21 @@ export default function Login() {
       .then((response) => response.json())
       .then((data) => {
         console.log("Success:", data.token);
-        login(data.token)
+        login()
+        toast({
+          title: `Sign in Successful`,
+          status: "success",
+          duration: 1000,
+          isClosable: true,
+        })
       })
       .catch((error) => {
         console.error("Error:", error);
       });
   };
 
-  if(isAuth===true){
-    return <Navigate to='/'/>
+  if(isAuth){
+    return <Navigate to='/' />
   }
 
   const handleChange = (e) => {
