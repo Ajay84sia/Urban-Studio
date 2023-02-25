@@ -23,7 +23,6 @@ const Cart = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const color = useColorModeValue("white");
   const color1 = useColorModeValue("#d1b080", "yellow");
   const color2 = useColorModeValue("gray.900", "gray.50");
   const color3 = useColorModeValue("white", "gray.900");
@@ -40,7 +39,6 @@ const Cart = () => {
       })
       .catch((err) => {
         console.log(err);
-        setError(err);
         setError(true);
         setLoading(false);
       });
@@ -145,8 +143,8 @@ const Cart = () => {
             {data?.map((el, i) => (
               <GridItem
                 key={el.id}
-                padding="10px"
-                border="1px solid grey"
+                padding="10px"  
+                boxShadow="rgba(0, 0, 0, 0.30) 0px 2px 10px"
                 borderRadius="10px"
                 width="80%"
                 margin="auto"
@@ -187,8 +185,8 @@ const Cart = () => {
                       <option value={5}>5</option>
                     </Select>
                   </Box>
-                  <Button onClick={() => handleDeleteItem(el.id)}>
-                    <DeleteIcon bg={color} />
+                  <Button marginTop="10px" colorScheme='red' onClick={() => handleDeleteItem(el.id)}>
+                    <DeleteIcon  />
                   </Button>
                 </Flex>
               </GridItem>

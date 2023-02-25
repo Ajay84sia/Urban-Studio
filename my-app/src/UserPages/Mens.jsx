@@ -36,7 +36,7 @@ const Mens = () => {
     setLoading(true);
 
     axios
-      .get(`https://prickly-gold-robe.cyclic.app/mens`, {
+      .get(`https://newjsonserver.onrender.com/mens`, {
         params: {
           q: brand,
           _sort: sort,
