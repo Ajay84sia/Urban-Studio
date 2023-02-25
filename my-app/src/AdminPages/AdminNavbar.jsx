@@ -46,7 +46,7 @@ export default function AdminNavbar() {
               />
             </NavLink>
           </Box>
-          { adminAuth ? (
+          {adminAuth ? (
             <Center>
               <Heading>Admin Dashboard</Heading>
             </Center>

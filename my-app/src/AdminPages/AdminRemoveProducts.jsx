@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   Center,
+  Heading,
   Image,
   Select,
   Table,
@@ -93,9 +94,11 @@ const AdminRemoveProducts = () => {
 
   return (
     <div>
+        <Heading textAlign='center'>Remove Products</Heading>
+        <br/>
       <Center>
         <Select
-          placeholder="Select Products Category"
+          placeholder="Select Product Category"
           onChange={(e) => setEndPoint(e.target.value)}
         >
           <option value="mens">Mens Products</option>
