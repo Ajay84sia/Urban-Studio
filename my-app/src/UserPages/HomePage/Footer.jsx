@@ -48,7 +48,7 @@ export default function Footer() {
             <Link href={"#"}>Terms & Conditions</Link>
             <Link href={"#"}>Fees & Payments</Link>
             <Link href={"#"}>Returns & Refunds</Link>
-            <Link href={"/admin"}>Admin</Link>
+            <Link href={"/adminlogin"}>Admin</Link>
           </Stack>
           <Stack align={"flex-start"}>
             <ListHeader>Help</ListHeader>

@@ -10,11 +10,12 @@ import HomeAndKitchen from "../UserPages/HomeAndKitchen";
 import Home from "../UserPages/HomePage/Home";
 import NotFound from "../UserPages/NotFound";
 import SingleProduct from "../UserPages/SingleProduct";
-import AdminDashboard from "../AdminPages/AdminDashboard";
+import AdminLogin from "../AdminPages/AdminLogin";
 import Cart from "../UserPages/Cart";
 import Payment from "../UserPages/Payment";
 import Final from "../UserPages/Final";
 import PrivateRoute from "./PrivateRoute";
+import AdminDashboard from "../AdminPages/AdminDashboard";
 
 const AllRoutes = () => {
   return (
@@ -63,11 +64,19 @@ const AllRoutes = () => {
             </PrivateRoute>
           }
         ></Route>
-        <Route path="/admin" element={<AdminDashboard />}></Route>
-        <Route path="/cart" element={<PrivateRoute><Cart /></PrivateRoute>}></Route>
+        <Route
+          path="/cart"
+          element={
+            <PrivateRoute>
+              <Cart />
+            </PrivateRoute>
+          }
+        ></Route>
         <Route path="/payment" element={<Payment />}></Route>
         <Route path="/final" element={<Final />}></Route>
         <Route path="/:endpoint/:id" element={<SingleProduct />}></Route>
+        <Route path="/adminlogin" element={<AdminLogin />}></Route>
+        <Route path="//admindash" element={<AdminDashboard />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </div>

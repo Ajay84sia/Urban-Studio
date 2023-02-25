@@ -28,17 +28,11 @@ export default function AdminFooter() {
       color={useColorModeValue("gray.200", "gray.200")}
     >
       <Image
-        className="scaleImg"
         src="https://assets.ajio.com/cms/AJIO/WEB/13102020-D-unisex-ajiocares-strip.jpg"
         alt="above footer2"
         width="100vw"
       />
-      <Image
-        className="scaleImg"
-        src={Forfooter}
-        alt="above footer1"
-        width="100vw"
-      />
+      <Image src={Forfooter} alt="above footer1" width="100vw" />
       <Center>
         <Container as={Stack} maxW={"6xl"} py={10}>
           <SimpleGrid columns={{ base: 2, sm: 2, md: 4 }} spacing={8}>
@@ -49,7 +43,7 @@ export default function AdminFooter() {
               <Link href={"#"}>Terms & Conditions</Link>
               <Link href={"#"}>Fees & Payments</Link>
               <Link href={"#"}>Returns & Refunds</Link>
-              <Link href={"/admin"}>Admin</Link>
+              <Link href={"/"}>HomePage</Link>
             </Stack>
             <Stack align={"flex-start"}>
               <ListHeader>Help</ListHeader>
@@ -82,7 +76,6 @@ export default function AdminFooter() {
       </Center>
       <Box py={10}>
         <Image
-          className="scaleImg"
           marginTop="-30px"
           src={FooterEnd}
           alt="above footer1"
