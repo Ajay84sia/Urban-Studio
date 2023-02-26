@@ -1,1 +1,2 @@
-💻Clone Project Name - <image src='https://1000logos.net/wp-content/uploads/2020/07/Ajio-Logo.png' marginTop="50px" alt='ajioLogo' width="150px"/>
+💻Clone Project Name - ![App Screenshot](https://user-images.githubusercontent.com/98752820/221406747-43da3184-77f2-4c6b-9d6b-d9f77fe3375a.png)
+---
