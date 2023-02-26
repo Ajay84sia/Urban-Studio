@@ -98,6 +98,37 @@ For Styling :- Chakra UI (UI Styling Library)
 # Dark Mode
 ![image](https://user-images.githubusercontent.com/98752820/221408167-6cf2e967-b463-4eb5-a2be-55a1de5c85bf.png)
 
+# Cart Page
+
+# Empty Cart
+![image](https://user-images.githubusercontent.com/98752820/221408232-69f38d0b-7fe6-4bfd-8149-cb8fd60347c1.png)
+
+# Cart with Products
+![image](https://user-images.githubusercontent.com/98752820/221408321-0ff42d71-77e4-4969-90df-b579b357c629.png)
+
+# Payment Page
+
+![image](https://user-images.githubusercontent.com/98752820/221408364-8a3202e6-8f84-46ae-8e96-a225a32636f2.png)
+
+# Order Placed Page
+![image](https://user-images.githubusercontent.com/98752820/221408403-c3bd5582-33ba-42d0-acdd-a9f8b38f663e.png)
+
+# Admin Login Page
+![image](https://user-images.githubusercontent.com/98752820/221408513-494678eb-74c1-4180-bb2d-809f191650de.png)
+
+# Admin Dashoard 
+ 
+ # All Products Data Section
+![image](https://user-images.githubusercontent.com/98752820/221408536-1bbd4cf9-d8dd-49b3-b285-169069ca7222.png)
+
+# Add Products Section
+![image](https://user-images.githubusercontent.com/98752820/221408577-cbe00686-6869-40e3-9dc1-2f9acf5a8563.png)
+
+# Remove Products Section
+![image](https://user-images.githubusercontent.com/98752820/221408600-7d874741-01b4-4c77-a98d-100090701b8a.png)
+
+# Change Product Details Section 
+![image](https://user-images.githubusercontent.com/98752820/221408622-e3990cf2-f451-422e-a680-6ad02204aa6d.png)
 
 
 ---
