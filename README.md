@@ -80,14 +80,19 @@ For Styling :- Chakra UI (UI Styling Library)
 
 # Products Page
 
+# Mens Products
 ![image](https://user-images.githubusercontent.com/98752820/221408004-b3b57638-bb2e-4ac3-bcce-0bf0fed760db.png)
 
+# Womens Products
 ![image](https://user-images.githubusercontent.com/98752820/221408027-c61a00f9-8686-457d-90ab-f12b479f7f65.png)
 
+# Kids Products
 ![image](https://user-images.githubusercontent.com/98752820/221408044-eeadc829-1a08-4fe6-b6df-9c2c14fdb538.png)
 
+# Indie Products
 ![image](https://user-images.githubusercontent.com/98752820/221408068-d71eb533-a09b-4466-833e-34d7d1134608.png)
 
+# Home & Kitchen Products
 ![image](https://user-images.githubusercontent.com/98752820/221408089-e80082d6-332e-4c54-b79e-7ca72c0d5603.png)
 
 # Single Product Page
