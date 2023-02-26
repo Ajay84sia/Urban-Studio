@@ -40,7 +40,7 @@ export default function Carousel6() {
   return (
     <Box
       position={"relative"}
-      height={"420px"}
+      height={"560px"}
       width={"full"}
       overflow={"hidden"}
       //   paddingTop="66px"

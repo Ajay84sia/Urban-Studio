@@ -11,17 +11,19 @@ import "./middlestyle.css";
 const MiddlePart = () => {
   return (
     <div>
-      <Carousel />
-      <Box>
+      <Carousel/>
+      <Box >
         <Image
           className="scaleImg"
           src="https://assets.ajio.com/cms/AJIO/WEB/D1-1440x90-11.jpg"
           alt="below first carosel"
+          width="100%"
         />
         <Image
           className="scaleImg"
           src="https://assets.ajio.com/cms/AJIO/WEB/IDBI-1440x128-23.jpg"
           alt="idbi bank"
+          width="100%"
         />
         <Carousel2 />
         <Carousel3 />
@@ -146,19 +148,19 @@ const MiddlePart = () => {
           />
         </Flex>
       </Box>
-          <Image
-            className="scaleImg"
-            src="https://assets.ajio.com/cms/AJIO/WEB/UHP-AJIOBeauty-1440x397.jpg"
-            alt="below exclusive"
-            // width="25%"
-          />
-          <Image
-            className="scaleImg"
-            src="https://assets.ajio.com/cms/AJIO/WEB/D-UHP-Accessories-SectionHeader.jpg"
-            alt="below exclusive2"
-            // width="25%"
-          />
-                <Box>
+      <Image
+        className="scaleImg"
+        src="https://assets.ajio.com/cms/AJIO/WEB/UHP-AJIOBeauty-1440x397.jpg"
+        alt="below exclusive"
+        width="100%"
+      />
+      <Image
+        className="scaleImg"
+        src="https://assets.ajio.com/cms/AJIO/WEB/D-UHP-Accessories-SectionHeader.jpg"
+        alt="below exclusive2"
+        width="100%"
+      />
+      <Box>
         <Flex marginTop="-2px">
           <Image
             className="scaleImg"
