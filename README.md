@@ -27,6 +27,10 @@ For Styling :- Chakra UI (UI Styling Library)
 
 - Product Section
 
+- Sort By Price
+
+- Filter By Brand Name
+
 - Single Product Page
 
 - Cart Page
@@ -34,6 +38,8 @@ For Styling :- Chakra UI (UI Styling Library)
 - Payment Page
 
 - Checkout Page
+
+- Dark Theme
 
 - Not Found Page
 
