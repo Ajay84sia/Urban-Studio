@@ -13,10 +13,19 @@ import {
   Th,
   Thead,
   Tr,
+  useToast,
 } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { AdminAuthContext } from "./AdminAuthContext";
+
+const initial = {
+  title: "",
+  brand: "",
+  endpoint: "",
+  price: "",
+  originalprice: "",
+};
 
 const AdminChangeDetails = () => {
   const [data, setData] = useState([]);
@@ -25,6 +34,59 @@ const AdminChangeDetails = () => {
   const { page, handlePageChange } = useContext(AdminAuthContext);
   const [endpoint, setEndPoint] = useState("mens");
   const [editID, setEditId] = useState(null);
+  const [formData, setFormData] = useState(initial);
+  const toast = useToast();
+  const { title, brand, price, originalprice } = formData;
+
+  const handleChange = (e) => {
+    const { name, value, type } = e.target;
+
+    formData.endpoint = endpoint;
+
+    const val = type === "number" ? Number(value) : value;
+
+    setFormData({ ...formData, [name]: val });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handlepostData(formData, editID, endpoint);
+    // console.log(formData, editID);
+  };
+
+  const handlepostData = (
+    data = {
+      title: "",
+      brand: "",
+      price: 0,
+      originalprice: 0,
+    },
+    editID,
+    endpoint
+  ) => {
+    fetch(`https://newjsonserver.onrender.com/${endpoint}/${editID}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        title: data.title,
+        brand: data.brand,
+        price: data.price,
+        originalprice: data.originalprice,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => fetchData(page, endpoint))
+      .then(() => setFormData(initial))
+      .then(() => setEditId(null));
+    toast({
+      title: `Product added in the Data`,
+      status: "success",
+      duration: 1000,
+      isClosable: true,
+    });
+  };
 
   const fetchData = (page, endpoint) => {
     setLoading(true);
@@ -119,10 +181,10 @@ const AdminChangeDetails = () => {
                     <Input
                       type="text"
                       name="title"
-                      value={el.title}
-                      onChange={(e) => e.target.value}
+                      value={title}
+                      onChange={handleChange}
                       placeholder={el.title}
-                      border='1px solid black'
+                      border="1px solid black"
                     />
                   </Td>
                 ) : (
@@ -133,10 +195,10 @@ const AdminChangeDetails = () => {
                     <Input
                       type="text"
                       name="brand"
-                      value={el.brand}
-                      onChange={(e) => e.target.value}
+                      value={brand}
+                      onChange={handleChange}
                       placeholder={el.brand}
-                      border='1px solid black'
+                      border="1px solid black"
                     />
                   </Td>
                 ) : (
@@ -147,10 +209,10 @@ const AdminChangeDetails = () => {
                     <Input
                       type="number"
                       name="price"
-                      value={el.price}
-                      onChange={(e) => e.target.value}
                       placeholder={el.price}
-                    border='1px solid black'
+                      value={price}
+                      onChange={handleChange}
+                      border="1px solid black"
                     />
                   </Td>
                 ) : (
@@ -159,12 +221,12 @@ const AdminChangeDetails = () => {
                 {editID === el.id ? (
                   <Td>
                     <Input
-                      type="text"
+                      type="number"
                       name="originalprice"
-                      value={el.originalprice}
-                      onChange={(e) => e.target.value}
+                      value={originalprice}
+                      onChange={handleChange}
                       placeholder={el.originalprice}
-                      border='1px solid black'
+                      border="1px solid black"
                     />
                   </Td>
                 ) : (
@@ -178,7 +240,11 @@ const AdminChangeDetails = () => {
                   >
                     Edit
                   </Button>
-                  <Button colorScheme="teal" variant="link">
+                  <Button
+                    colorScheme="teal"
+                    variant="link"
+                    onClick={handleSubmit}
+                  >
                     Save
                   </Button>
                 </Td>
