@@ -9,3 +9,55 @@ Largest online fashion and lifestyle e-commerce platform in India. It is owned b
 <br>
 <br>
 ![image](https://user-images.githubusercontent.com/98752820/221407064-a672babb-5566-4e77-ae89-12b0ff028e7e.png)
+
+---
+ 💫Tech Stack Used ->
+For Frontend : ReactJS, JavaScript, ES6. 
+For database: Json Server (Render). 
+For Styling :- Chakra UI (UI Styling Library)
+---
+
+## Features ✨
+
+- HomePage , Carousel  , Navbar, Footer
+
+- User Authentication
+
+- Private Route
+
+- Product Section
+
+- Single Product Page
+
+- Cart Page
+
+- Payment Page
+
+- Checkout Page
+
+- Not Found Page
+
+- Admin Authentication 
+
+- Admin Dashboard
+
+- Access All Products Data Feature for Admin
+
+- Add Products Feature for Admin
+
+- Remove Products Feature for Admin
+
+- Update Products Details Feature for Admin
+
+---
+## Screenshots 📷
+---
+
+# HomePage
+
+---
+⭐Deployed Link:-https://urbanstudio.netlify.app/
+
+
+----
+<h1 align="center">✨Thank You✨</h1>
