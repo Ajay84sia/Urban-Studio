@@ -143,7 +143,7 @@ const Cart = () => {
             {data?.map((el, i) => (
               <GridItem
                 key={el.id}
-                padding="10px"  
+                padding="10px"
                 boxShadow="rgba(0, 0, 0, 0.30) 0px 2px 10px"
                 borderRadius="10px"
                 width="80%"
@@ -183,10 +183,19 @@ const Cart = () => {
                       <option value={3}>3</option>
                       <option value={4}>4</option>
                       <option value={5}>5</option>
+                      <option value={6}>6</option>
+                      <option value={7}>7</option>
+                      <option value={8}>8</option>
+                      <option value={9}>9</option>
+                      <option value={10}>10</option>
                     </Select>
                   </Box>
-                  <Button marginTop="10px" colorScheme='red' onClick={() => handleDeleteItem(el.id)}>
-                    <DeleteIcon  />
+                  <Button
+                    marginTop="10px"
+                    colorScheme="red"
+                    onClick={() => handleDeleteItem(el.id)}
+                  >
+                    <DeleteIcon />
                   </Button>
                 </Flex>
               </GridItem>
@@ -195,30 +204,34 @@ const Cart = () => {
         </Box>
       )}
 
-      <Center width="80%" margin="auto" marginBottom="18px">
-        <Flex>
-          <Heading>Bag Total : &nbsp; ₹{cartTotal}/-</Heading>
-        </Flex>
-      </Center>
-      <Center>
-        <NavLink to="/payment">
-          <Button
-            size={"md"}
-            width="150px"
-            py={"7"}
-            bg={color2}
-            color={color3}
-            textTransform={"uppercase"}
-            marginBottom={"20px"}
-            _hover={{
-              transform: "translateY(2px)",
-              boxShadow: "lg",
-            }}
-          >
-            CHECKOUT
-          </Button>
-        </NavLink>
-      </Center>
+      {data.length === 0 ? null : (
+        <Center width="80%" margin="auto" marginBottom="18px">
+          <Flex>
+            <Heading>Bag Total : &nbsp; ₹{cartTotal}/-</Heading>
+          </Flex>
+        </Center>
+      )}
+      {data.length === 0 ? null : (
+        <Center>
+          <NavLink to="/payment">
+            <Button
+              size={"md"}
+              width="150px"
+              py={"7"}
+              bg={color2}
+              color={color3}
+              textTransform={"uppercase"}
+              marginBottom={"20px"}
+              _hover={{
+                transform: "translateY(2px)",
+                boxShadow: "lg",
+              }}
+            >
+              CHECKOUT
+            </Button>
+          </NavLink>
+        </Center>
+      )}
       <Footer />
     </div>
   );

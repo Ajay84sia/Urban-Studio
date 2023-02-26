@@ -1,7 +1,8 @@
-import { Box, Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
+import { Box, Center, Image, Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
 import React from "react";
 import AdminAddProducts from "./AdminAddProducts";
 import AdminAllProducts from "./AdminAllProducts";
+import AdminChangeDetails from "./AdminChangeDetails";
 import AdminFooter from "./AdminFooter";
 import AdminNavbar from "./AdminNavbar";
 import AdminRemoveProducts from "./AdminRemoveProducts";
@@ -32,13 +33,17 @@ const AdminDashboard = () => {
               <AdminRemoveProducts/>
             </TabPanel>
             <TabPanel>
-              <p>Change Details</p>
+              <AdminChangeDetails/>
             </TabPanel>
             <TabPanel>
-              <p>Manage Quantity</p>
+              <Center>
+                <Image src='https://horticulturedept.ap.gov.in/Horticulture/New_Home/img/construction.gif' alt='under Construction'/>
+              </Center>
             </TabPanel>
             <TabPanel>
-              <p>Manage Order</p>
+            <Center>
+                <Image src='https://horticulturedept.ap.gov.in/Horticulture/New_Home/img/construction.gif' alt='under Construction'/>
+              </Center>
             </TabPanel>
           </TabPanels>
         </Tabs>

@@ -1,4 +1,5 @@
-import { Box, Button, Center, Flex, Image } from "@chakra-ui/react";
+import { Box, Button, Center, Image } from "@chakra-ui/react";
+
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Footer from "./HomePage/Footer";
@@ -8,7 +9,7 @@ const Final = () => {
   return (
     <div>
       <NewNavbar />
-      <Box py={16} bg='white'>
+      <Box py={16} bg="white">
         <Center>
           <Image
             src="https://buy-digital.netlify.app/Images/order/Checkmark2.gif"
