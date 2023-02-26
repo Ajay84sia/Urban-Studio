@@ -81,7 +81,7 @@ const AdminChangeDetails = () => {
       .then(() => setFormData(initial))
       .then(() => setEditId(null));
     toast({
-      title: `Product added in the Data`,
+      title: `Product Details Updated Successfully`,
       status: "success",
       duration: 1000,
       isClosable: true,
