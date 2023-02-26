@@ -93,7 +93,7 @@ const AdminAllProducts = () => {
         </Select>
       </Center>
       <TableContainer>
-        <Table variant="simple">
+        <Table variant="simple" size="sm">
           <Thead>
             <Tr>
               <Th>S.No.</Th>
@@ -104,19 +104,9 @@ const AdminAllProducts = () => {
           </Thead>
           <Tbody>
             {data?.map((el, i) => (
-              <Tr key={i + 1}>
+              <Tr key={i}>
                 <Td>
-                  {page === 1
-                    ? i + 1
-                    : page === 2
-                    ? i + 11
-                    : page === 3
-                    ? i + 21
-                    : page === 4
-                    ? i + 31
-                    : page === 5
-                    ? i + 41
-                    : i}
+                    {el.id}
                   .
                 </Td>
                 <Td>
