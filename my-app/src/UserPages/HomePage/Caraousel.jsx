@@ -40,7 +40,7 @@ export default function Carousel() {
   return (
     <Box
       position={"relative"}
-      height={"460px"}
+      height={"560px"}
       width={"full"}
       overflow={"hidden"}
       paddingTop="66px"
