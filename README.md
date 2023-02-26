@@ -9,7 +9,9 @@ Largest online fashion and lifestyle e-commerce platform in India. It is owned b
 
 <br>
 <br>
-![image](https://user-images.githubusercontent.com/98752820/221407064-a672babb-5566-4e77-ae89-12b0ff028e7e.png)
+
+![image](https://user-images.githubusercontent.com/98752820/221408859-370664fb-a998-4a07-a898-7310092ab6be.png)
+
 
 ---
  💫Tech Stack Used ->
