@@ -12,8 +12,11 @@ Largest online fashion and lifestyle e-commerce platform in India. It is owned b
 
 ---
  💫Tech Stack Used ->
+ <br>
 For Frontend : ReactJS, JavaScript, ES6. 
+ <br>
 For database: Json Server (Render). 
+ <br>
 For Styling :- Chakra UI (UI Styling Library)
 ---
 
