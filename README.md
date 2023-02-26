@@ -10,6 +10,8 @@ Largest online fashion and lifestyle e-commerce platform in India. It is owned b
 
 ![image](https://user-images.githubusercontent.com/98752820/221408859-370664fb-a998-4a07-a898-7310092ab6be.png)
 
+---
+⭐Deployed Link:-https://urbanstudio.netlify.app/
 
 ---
  💫Tech Stack Used ->
@@ -134,10 +136,6 @@ For Styling :- Chakra UI (UI Styling Library)
 
 # Change Product Details Section 
 ![image](https://user-images.githubusercontent.com/98752820/221408622-e3990cf2-f451-422e-a680-6ad02204aa6d.png)
-
-
----
-⭐Deployed Link:-https://urbanstudio.netlify.app/
 
 
 ----
