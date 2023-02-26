@@ -7,8 +7,6 @@ Largest online fashion and lifestyle e-commerce platform in India. It is owned b
 
 💻Unique Project Name & logo :- URBAN STUDIO
 
-<br>
-<br>
 
 ![image](https://user-images.githubusercontent.com/98752820/221408859-370664fb-a998-4a07-a898-7310092ab6be.png)
 
