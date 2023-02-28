@@ -34,6 +34,8 @@ For Styling :- Chakra UI (UI Styling Library)
 
 - Product Section
 
+- Pagination
+
 - Sort By Price
 
 - Filter By Brand Name
@@ -53,6 +55,8 @@ For Styling :- Chakra UI (UI Styling Library)
 - Admin Authentication 
 
 - Admin Dashboard
+
+- Pagination
 
 - Access All Products Data Feature for Admin
 
