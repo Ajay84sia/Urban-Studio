@@ -72,7 +72,8 @@ For Styling :- Chakra UI (UI Styling Library)
 
 # HomePage
 
-![image](https://user-images.githubusercontent.com/98752820/221407700-6b97d02b-9051-4531-af04-d6d5b8ee739b.png)
+![image](https://user-images.githubusercontent.com/98752820/230618007-8d174e53-d3a1-49b3-8bfb-1cacf5bee251.png)
+
 
 ![image](https://user-images.githubusercontent.com/98752820/221407766-d5cd5cdc-deca-4382-a51b-24dace9c9989.png)
 
